@@ -73,8 +73,20 @@ export function App() {
  * DOCUMENTACAO DO ERRO ABAIXO
  * https://typescript-eslint.io/rules/no-explicit-any/
  */
-  function createUser(data: createUserFormData) {
-    setOutput(JSON.stringify(data, null, 2))
+  function createUser(data: unknown) {
+
+    fetch('http://localhost:3333/users', {
+      method: 'POST',
+      headers:
+        { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(response => { response.json() })
+      .catch(error => console.log(error))
+      .finally(() => {
+         setOutput(JSON.stringify(data, null, 2))
+      })
+
   }
   function addNewPet() {
     append({ name: '', animal: '', age: 0 })
