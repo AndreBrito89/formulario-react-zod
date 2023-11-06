@@ -1,27 +1,15 @@
-# React + TypeScript + Vite
+# Formulário Simples com React e Zod
+## Projeto feito com base no vídeo: https://www.youtube.com/watch?v=XSbMSSdGSdg ##
+Este é um projeto de exemplo que demonstra como criar um formulário simples usando React e Zod para validação dos dados de entrada. O objetivo deste projeto é fornecer uma introdução básica ao uso do React para criar formulários e à integração do Zod para validação de dados.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Pré-requisitos
 
-Currently, two official plugins are available:
+Antes de começar, certifique-se de que você tenha o Node.js instalado em seu sistema. Você pode fazer o download do Node.js em [nodejs.org](https://nodejs.org/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Estrutura do Projeto
+A estrutura do projeto é organizada da seguinte maneira:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+src/: Contém os arquivos fonte do aplicativo.
+App.js: O componente raiz do aplicativo.
+package.json: Arquivo de configuração do Node.js com as dependências do projeto.
+README.md: Este arquivo README.
