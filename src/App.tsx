@@ -1,8 +1,15 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import './assets/styles/global.css';
 import { useForm, useFieldArray } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
+import { user } from './user.tsx';
+//  TODO:
+// ->CRIAR ARQUIVO USER PARA IMPLEMENTAÇÃO DE METODOS POST/GET/DELETE/UPDATE
+// ->IMPLEMENTAR CLASSE USER 
+// ->INTEGAR CLASSE USER AO BACK-END
+
+
 /////////////////////////////////////////////
 //TRATAMENTO DE VARIAVEIS UTILIZANDO O ZOD//
 ///////////////////////////////////////////
@@ -43,14 +50,14 @@ const createUserFormSchema = z.object({
 
 
 //usa a funcao infer do zod para passar os tipos dos campos para usar o createUserFormData
-type createUserFormData = z.infer<typeof createUserFormSchema>
+export type createUserFormData = z.infer<typeof createUserFormSchema>
 
 ////////////
 /// APP ///
 //////////
 export function App() {
   //associa os dados do input a um estado
-  const [output, setOutput] = useState('')
+  //const [output, setOutput] = useState('')
   //registra os campos do formulario
   const { register,
     handleSubmit,
@@ -69,25 +76,8 @@ export function App() {
     control,
     name: 'animais',
   })
-  /**
- * DOCUMENTACAO DO ERRO ABAIXO
- * https://typescript-eslint.io/rules/no-explicit-any/
- */
-  function createUser(data: unknown) {
 
-    fetch('http://localhost:3333/users', {
-      method: 'POST',
-      headers:
-        { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(response => { response.json() })
-      .catch(error => console.log(error))
-      .finally(() => {
-         setOutput(JSON.stringify(data, null, 2))
-      })
 
-  }
   function addNewPet() {
     append({ name: '', animal: '', age: 0 })
   }
@@ -99,7 +89,7 @@ export function App() {
     <main className='h-screen bg-zinc-950 text-zinc-300 flex flex-col gap-10 items-center justify-center'>
 
       <form
-        onSubmit={handleSubmit(createUser)}
+        onSubmit={handleSubmit(user.createUser)}
         className='flex flex-col gap-4 w-full max-w-xs'>
         <div className='flex flex-col gap-1'>
           <label htmlFor=''>Name:</label>
@@ -189,7 +179,7 @@ export function App() {
 
       </form>
 
-      <pre>{output}</pre>
+      <pre>{user.outputMessage}</pre>
 
     </main>
   )
